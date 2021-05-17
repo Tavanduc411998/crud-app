@@ -1,0 +1,74 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "name": "category 1",
+      "description": "category description 1",
+      "primary": 1,
+      "active": "true"
+    },
+    {
+      "id": 2,
+      "name": "category 2",
+      "description": "category description 2",
+      "primary": 2,
+      "active": "true"
+    }
+  ],
+
+  "customer": [
+    {
+      "id": 1,
+      "name": "customer 1",
+      "description": "customer description 1",
+      "primary": 1,
+      "active": "true"
+    }
+  ],
+
+  "status": [
+    {
+      "id": 1,
+      "name": "status 1",
+      "description": "status description 1",
+      "active": "true"
+    }
+  ],
+
+  "techStack": [
+    {
+      "id": 1,
+      "name": "HTML",
+      "description": "Build structure and content of web",
+      "active": "true"
+    },
+    {
+      "id": 2,
+      "name": "CSS",
+      "description": "Style HTML document",
+      "active": "true"
+    }
+  ],
+
+  "center": [
+    {
+      "id": 1,
+      "name": "center 1",
+      "mission": "description of mission"
+    }
+  ],
+  "employee": [
+    {
+      "id": 1,
+      "name": "Duc",
+      "dob": "04/01/1998",
+      "phone": "0981128261"
+    }
+  ],
+  "project": [
+    {
+      "id": 1,
+      "name": "Project 1"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+.ts-nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .ts-nav button {
+    border: none;
+    border-radius: 15px;
+    margin: 10px 10px 0 0;
+    padding: 10px 20px;
+    background-color: pink;
+  }
+  
+  .ts-nav button:hover {
+    background-color: rgb(58, 206, 206);
+  }
+  
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table,
+  td,
+  th {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  td,th {
+      width: 25%;
+  }
+  
+  tr:hover {
+      background-color: grey;
+  }
+  
+  .ts-footer {
+      display:flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+  }

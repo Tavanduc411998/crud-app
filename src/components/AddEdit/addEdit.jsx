@@ -9,11 +9,6 @@ AddEditPage.propTypes = {};
 
 function AddEditPage({ add }) {
   const [form] = Form.useForm();
-  const [requiredMark, setRequiredMarkType] = useState("optional");
-
-  const onRequiredTypeChange = ({ requiredMarkValue }) => {
-    setRequiredMarkType(requiredMarkValue);
-  };
 
   const [newCategory, setNewCategory] = useState({
     id: "",
@@ -43,13 +38,8 @@ function AddEditPage({ add }) {
     <Form
       form={form}
       layout="vertical"
-      initialValues={{
-        requiredMarkValue: requiredMark,
-      }}
-      onValuesChange={onRequiredTypeChange}
-      requiredMark={requiredMark}
     >
-      <Form.Item label="Required Mark" name="requiredMarkValue">
+      <Form.Item name="requiredMarkValue">
         <Radio.Group>
           <Radio.Button value="optional">Category</Radio.Button>
           <Radio.Button value>Status</Radio.Button>
@@ -65,8 +55,8 @@ function AddEditPage({ add }) {
         <Input placeholder="input placeholder" />
       </Form.Item>
 
-      <Form.Item label="Field A" required tooltip="This is a required field">
-        <Input placeholder="input placeholder" />
+      <Form.Item label="Field A" required tooltip="This is a required field" hidden="true">
+        <Input placeholder="input placeholder" type="hidden" />
       </Form.Item>
 
       <Form.Item

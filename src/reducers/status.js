@@ -19,7 +19,6 @@ const initialState = {
       active: "false",
     },
   ],
-  activeId: null,
 };
 
 const statusReducer = (state = initialState, action) => {

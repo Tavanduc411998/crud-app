@@ -2,81 +2,87 @@ import React from "react";
 import { useState } from "react";
 import "./addEdit.css";
 
+import { Form, Input, Button, Radio } from "antd";
+import { InfoCircleOutlined } from "@ant-design/icons";
+
 AddEditPage.propTypes = {};
 
 function AddEditPage({ add }) {
-  const [newCategory, setNewCategory] = useState({});
+  const [form] = Form.useForm();
+  const [requiredMark, setRequiredMarkType] = useState("optional");
+
+  const onRequiredTypeChange = ({ requiredMarkValue }) => {
+    setRequiredMarkType(requiredMarkValue);
+  };
+
+  const [newCategory, setNewCategory] = useState({
+    id: "",
+    name: "",
+    description: "",
+    primary: "",
+    active: "",
+  });
+
+  const handleSelection = (e) => {};
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newCategory) return;
     add(newCategory);
-    setNewCategory([]);
+    console.log(newCategory);
+    setNewCategory({
+      id: "",
+      name: "",
+      description: "",
+      primary: "",
+      active: "",
+    });
   };
+
   return (
-    <div>
-      <h2>Add Edit Page</h2>
-      <form onSubmit={handleSubmit}>
-        <label for="id">Id</label>
-        <input
-          type="text"
-          id="id"
-          name="id"
-          placeholder="Id..."
-          value={newCategory.id}
-          onChange={(e) => setNewCategory(e.target.value)}
-        />
+    <Form
+      form={form}
+      layout="vertical"
+      initialValues={{
+        requiredMarkValue: requiredMark,
+      }}
+      onValuesChange={onRequiredTypeChange}
+      requiredMark={requiredMark}
+    >
+      <Form.Item label="Required Mark" name="requiredMarkValue">
+        <Radio.Group>
+          <Radio.Button value="optional">Category</Radio.Button>
+          <Radio.Button value>Status</Radio.Button>
+          <Radio.Button value={false}>Center</Radio.Button>
+        </Radio.Group>
+      </Form.Item>
 
-        <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Name..."
-          value={newCategory.name}
-          onChange={(e) => setNewCategory(e.target.value)}
-        />
+      <Form.Item label="Field A" required tooltip="This is a required field">
+        <Input placeholder="input placeholder" />
+      </Form.Item>
 
-        <label for="description">Description</label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          placeholder="Description..."
-          value={newCategory.description}
-          onChange={(e) => setNewCategory(e.target.value)}
-        />
+      <Form.Item label="Field A" required tooltip="This is a required field">
+        <Input placeholder="input placeholder" />
+      </Form.Item>
 
-        <label for="primary">Primary</label>
-        <input
-          type="text"
-          id="primary"
-          name="primary"
-          placeholder="Primary..."
-          value={newCategory.primary}
-          onChange={(e) => setNewCategory(e.target.value)}
-        />
+      <Form.Item label="Field A" required tooltip="This is a required field">
+        <Input placeholder="input placeholder" />
+      </Form.Item>
 
-        <label for="active">Active</label>
-        <input
-          type="text"
-          id="active"
-          name="active"
-          placeholder="Active..."
-          value={newCategory.active}
-          onChange={(e) => setNewCategory(e.target.value)}
-        />
+      <Form.Item
+        label="Field B"
+        tooltip={{
+          title: "Tooltip with customize icon",
+          icon: <InfoCircleOutlined />,
+        }}
+      >
+        <Input placeholder="input placeholder" />
+      </Form.Item>
 
-        {/* <label for="country">Country</label>
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select> */}
-
-        <input type="submit" value="Submit" onSubmit={handleSubmit} />
-      </form>
-    </div>
+      <Form.Item>
+        <Button type="primary">Submit</Button>
+      </Form.Item>
+    </Form>
   );
 }
 

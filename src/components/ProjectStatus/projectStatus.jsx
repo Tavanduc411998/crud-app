@@ -1,15 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import PropTypes from "prop-types";
+// import { Link } from "react-router-dom";
 import "./projectStatus.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addNewStatus } from "../../actions/status";
+import { useState } from "react";
 
 ProjectStatus.propTypes = {};
 
 function ProjectStatus(props) {
   const statusList = useSelector((state) => state.status.statuses);
-  const dispatch = useDispatch();
 
   return (
     <div>
@@ -47,55 +47,74 @@ function ProjectStatus(props) {
 
 export default ProjectStatus;
 
-const randomIDd = () => {
-  return 1000 + Math.floor(Math.random() * 9000);
-};
-
 function AddEditPage(props) {
+  const statusList = useSelector((state) => state.status.statuses);
+  const [newStatus, setNewStatus] = useState({
+    id: statusList.length + 1,
+    name: "",
+    description: "",
+    active: "",
+  });
   const dispatch = useDispatch();
 
-  const handleAddStatusClick = () => {
-    const newId = randomIDd();
-    const newStatus = {
-      id: newId,
-      name: `Status ${newId}`,
-      description: `Description ${newId}`,
-      active: "true",
-    };
+  const handleAddStatusClick = (e) => {
+    e.preventDefault();
     const action = addNewStatus(newStatus);
     dispatch(action);
     console.log(newStatus);
+    setNewStatus({
+      id: newStatus.id + 1,
+      name: "",
+      description: "",
+      active: "",
+    });
   };
 
   return (
     <div>
       <form>
-        <label for="id">Id</label>
-        <input type="text" id="id" name="id" placeholder="Id..." />
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Name..."
+          value={newStatus.name}
+          onChange={(e) => {
+            setNewStatus({ ...newStatus, [e.target.name]: e.target.value });
+          }}
+        />
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name..." />
-
-        <label for="description">Description</label>
+        <label htmlFor="description">Description</label>
         <input
           type="text"
           id="description"
           name="description"
-          placeholder="Description..."
+          placeholder="description..."
+          value={newStatus.description}
+          onChange={(e) =>
+            setNewStatus({ ...newStatus, [e.target.name]: e.target.value })
+          }
         />
 
-        <label for="primary">Primary</label>
+        <label htmlFor="active">Active</label>
         <input
           type="text"
-          id="primary"
-          name="primary"
-          placeholder="Primary..."
+          id="active"
+          name="active"
+          placeholder="Active..."
+          value={newStatus.active}
+          onChange={(e) =>
+            setNewStatus({ ...newStatus, [e.target.name]: e.target.value })
+          }
         />
 
-        <label for="active">Active</label>
-        <input type="text" id="active" name="active" placeholder="Active..." />
-
-        <input type="button" value="Create" onClick={handleAddStatusClick} />
+        <input
+          type="button"
+          value="Create"
+          name="id"
+          onClick={handleAddStatusClick}
+        />
       </form>
     </div>
   );

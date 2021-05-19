@@ -1,28 +1,13 @@
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+
 .container {
   display: flex;
   flex-direction: row;
-}
-
-/* Left Box */
-.left-nav {
-  width: 20%;
-  border: 1px solid black;
-  border-radius: 15px;
-  margin: 0 10px 0 10px;
-}
-
-.left-nav ul {
-  list-style-type: none;
-  padding-left: 10%;
-}
-
-.left-nav p {
-  margin: 0;
-  font-size: 20px;
-}
-
-a:-webkit-any-link {
-  text-decoration: none;
+  height: 100%;
 }
 
 /* Right Box */

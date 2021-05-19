@@ -3,24 +3,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./projectCategory.css";
-import AddEditPage from "../AddEdit/addEdit";
 
-ProjectCategory.propTypes = {};
+// ProjectCategory.propTypes = {};
 
 function ProjectCategory(props) {
   const [categories, setCategories] = useState([
     {
-      id: 1,
+      id: "1",
       name: "category 1",
       description: "category description 1",
-      primary: 1,
+      primary: "1",
       active: "true",
     },
     {
-      id: 2,
+      id: "2",
       name: "category 2",
       description: "category description 2",
-      primary: 2,
+      primary: "2",
       active: "true",
     },
   ]);
@@ -35,7 +34,7 @@ function ProjectCategory(props) {
     }
   }, []);
 
-  const add = ({id, name, description, primary, active}) => {
+  const add = ({ id, name, description, primary, active }) => {
     const newCategories = [
       ...categories,
       {
@@ -55,7 +54,7 @@ function ProjectCategory(props) {
       <h2>Project Category</h2>
       <div className="pc-nav">
         <button>
-          <AddEditPage add={add} />
+          <Link to="/addEdit">NEW</Link>
         </button>
       </div>
       <table>
@@ -70,21 +69,17 @@ function ProjectCategory(props) {
         </thead>
         <tbody>
           {categories.map((cat, index) => {
-            console.log(cat.id)
+            console.log(cat.id);
             return (
-            <tr key={index}>
-              {/* <td>{cat.id}</td> */}
-              {/* <td>{cat.name}</td>
-              <td>{cat.description}</td>
-              <td>{cat.primary}</td>
-              <td>{cat.active}</td> */}
-              <td>{cat.name}</td>
-              <td>{cat.description}</td>
-              <td>{cat.primary}</td>
-              <td>{cat.active}</td>
-              <td>{cat.active}</td>
-            </tr>
-          )})}
+              <tr key={index}>
+                <td>{cat.id}</td>
+                <td>{cat.name}</td>
+                <td>{cat.description}</td>
+                <td>{cat.primary}</td>
+                <td>{cat.active}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <div className="pc-footer">
